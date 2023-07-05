@@ -1,0 +1,74 @@
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    column-gap: 10px;
+    row-gap: 20px;
+    place-items: center;
+}
+
+.movie-list > a {
+    margin: 20px 0 0 0;
+    width: 280px;
+    padding: 0;
+    text-decoration: none;
+}
+
+.movie-card {
+    display: grid;
+    place-self: center;
+    margin: 0;
+    width: 280px;
+    padding-top: 20px;
+    background-color: slategray;
+    border-radius: 10px;
+}
+
+.movie-card > div {
+    display: flex;
+    flex-direction: column;
+    height: 20px;
+    text-decoration: none;
+    color: rgb(111, 128, 144, 0%);
+    margin: 0;
+    overflow: visible;
+    font-weight: bold;
+    justify-content: center;
+    letter-spacing: 2px;
+    transition: height 500ms;
+}
+
+.movie-card > div > .movie-card-text{
+    transition: color 200ms;
+    color: rgb(111, 128, 144, 0%);
+}
+
+.movie-card:hover > div {
+    transition: height 500ms;
+    height: 40px; 
+}
+
+.movie-card:hover > div > .movie-card-text {
+    transition-property: color;
+    transition-delay: 150ms;
+    color: white;    
+}
+
+img {
+    width: 280px;
+    height: 420px;
+    margin: 0;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: top;
+    transition: 500ms;
+}
+
+.movie-card:hover > img {
+    transition: 500ms;
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+    width: 280px;
+    height: 400px;
+    object-position: top;
+}

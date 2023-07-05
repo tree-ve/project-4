@@ -1,0 +1,43 @@
+.actor-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    column-gap: 10px;
+    row-gap: 20px;
+    place-items: center;
+    margin: 20px 0 0 0;
+}
+
+.actor-list > a {
+    margin: 0;
+    width: 280px;
+    padding: 0;
+    text-decoration: none;
+}
+
+.actor-card {
+    display: grid;
+    place-self: center;
+    margin: 0;
+    width: 280px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: slategray;
+    border-radius: 10px;
+}
+
+.actor-card > div {
+    display: flex;
+    flex-direction: column;
+    height: 20px;
+    text-decoration: none;
+    color: white;
+    margin: 0;
+    overflow: visible;
+    font-weight: bold;
+    justify-content: center;
+    letter-spacing: 2px;
+}
+
+.actor-card > div > .actor-card-text{
+    color: white;
+}

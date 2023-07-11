@@ -13,6 +13,10 @@ export default function NavBar({ user, setUser, handleCheckToken }) {
             <Link to="/movies" className="link">Movies</Link>
             &nbsp; | &nbsp;
             <Link to="/actors" className="link">Actors</Link>
+            &nbsp; | &nbsp;
+            <Link to="/groups" className="link">Groups</Link>
+            &nbsp; | &nbsp;
+            <Link to={`/user/${user._id}`} className="link" user={user} key={user._id}>{user.name} {user._id}</Link>
             <br/>
             <span>Welcome, {user.name}</span>
             &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>

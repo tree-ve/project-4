@@ -1,5 +1,6 @@
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import LogInForm from '../../components/LogInForm/LogInForm';
+import './LogInPage.css';
 // import { Link } from "react-router-dom"
 
 export default function AuthPage({ user, setUser, authPage }) {

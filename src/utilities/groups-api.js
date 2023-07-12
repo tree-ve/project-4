@@ -2,15 +2,19 @@
 // This file should only contain AJAX helper methods
 import sendRequest from './send-request';
 const BASE_URL = '/api/groups';
-// const BASE_URL = '/groups/new';
 
-export function newGroup(groupData) {
-    return sendRequest(`${BASE_URL}`, 'POST', groupData);
+export async function newGroup(groupData) {
+    return sendRequest(`${BASE_URL}/new`, 'POST', groupData);
 }
   
-export function getGroups() {
-    return sendRequest(`${BASE_URL}/index`);
+export async function getGroups() {
+    return sendRequest(BASE_URL);
 }
+
+export async function getGroupById(id) {
+    return sendRequest(`${BASE_URL}/${id}`);
+}
+
 // export function login(credentials) {
 //     return sendRequest(`${BASE_URL}/login`, 'POST', credentials);
 // }

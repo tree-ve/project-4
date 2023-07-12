@@ -1,6 +1,7 @@
 import { Component } from 'react';
 // import { newGroup } from '../../utilities/groups-service';
 import * as groupsAPI from '../../utilities/groups-api';
+// import { Link, useNavigate } from 'react-router-dom';
 
 export default class NewGroupForm extends Component {
 // export default function SignUpForm({ user, setUser }) {
@@ -10,6 +11,8 @@ export default class NewGroupForm extends Component {
         owner: this.props.user._id,
         error: ''
     };
+
+    // navigate = useNavigate();
 
     handleChange = (evt) => {
         this.setState({

@@ -7,12 +7,13 @@ const groupsCtrl = require('../../controllers/api/groups');
 // router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 
 // POST /api/groups
-router.post('/', groupsCtrl.create);
+router.get('/', groupsCtrl.index);
 
-// POST /api/groups/index
-router.post('/index', groupsCtrl.index);
+// POST /api/groups/new
+router.post('/new', groupsCtrl.create);
 
-// // POST /api/users/login
-// router.post('/login', usersCtrl.login);
+// POST /api/groups/:id
+router.get('/:id', groupsCtrl.show);
+
 
 module.exports = router;

@@ -7,15 +7,19 @@ import * as groupsAPI from '../../utilities/groups-api';
 
 export default function GroupsListPage({ groups, setGroups }) {
     const categoriesRef = useRef([]);
-    const navigate = useNavigate();
+    // const [groups, setGroups] = useState([]);
+    // const navigate = useNavigate();
 
     useEffect(function() {
         async function getGroups() {
+            console.log('GroupsListPage useEffect start')
             const groups = await groupsAPI.getGroups();
+            // console.log('marker')
+            // console.log(groups)
+            setGroups(groups)
             console.log(groups)
-            categoriesRef.current = [...new Set(groups.map(group => group.title))];
+            categoriesRef.current = [...new Set(groups.map(group => group.owner._id))];
             setGroups(groups);
-            // setActiveCat(categoriesRef.current[0]);
         }
         getGroups();
     }, []);
@@ -23,7 +27,7 @@ export default function GroupsListPage({ groups, setGroups }) {
         <div>
             <Link to="/groups/new" className="link" groups={groups}>Make a new group</Link>
             <div className="group-list">
-                {console.log(groups)}
+                {/* {console.log(groups)} */}
                 <GroupCard groups={groups} />
             </div>
         </div>

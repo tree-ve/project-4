@@ -34,9 +34,18 @@ export default class NewGroupForm extends Component {
             // will resolve to the user object included in the
             // payload of the JSON Web Token (JWT)
             // const groups = await newGroup(formData);
-            const groups = await groupsAPI.newGroup(formData);
+            await groupsAPI.newGroup(formData);
+            const groups = await groupsAPI.getGroups();
+            // console.log(newGroup)
             // console.log(groups)
+            // const newGroups = {
+            //     ...groups,
+            //     newGroup
+            // }
+            // this.props.setGroups(newGroups)
             this.props.setGroups(groups)
+            
+            // this.props.navigate('groups')
         } catch (error) {
             // An error occurred
             console.log(error)

@@ -1,12 +1,13 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { movies } from "../../data.js";
 
 // Router
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 // Add the following import
 import { getUser, checkToken } from '../../utilities/users-service';
 // import { getGroups } from '../../utilities/groups-api';
+import * as groupsAPI from '../../utilities/groups-api';
 
 // Custom Components
 import NavBar from '../../components/NavBar/NavBar'
@@ -26,6 +27,19 @@ export default function App() {
 
 	// const [groups, setGroups] = useState(getGroups());
 	const [groups, setGroups] = useState([]);
+	const categoriesRef = useRef([]);
+	const navigate = useNavigate();
+
+    useEffect(function() {
+        async function getGroups() {
+            // console.log('App useEffect start')
+            const groups = await groupsAPI.getGroups();
+            setGroups(groups)
+            categoriesRef.current = [...new Set(groups.map(group => group.owner._id))];
+            // setGroups(groups);
+        }
+        getGroups();
+    }, []);
 
 	const [authPage, setAuthPage] = useState()
 
@@ -33,6 +47,9 @@ export default function App() {
 	const castArray2D = [].concat(...castArrOfArr)
 	const castSet = new Set(castArray2D);
 	const castArray = Array.from(castSet);
+
+	// const usersGroups = groups.filter(group => group.users.includes(user._id))
+	// console.log('usersGroups', usersGroups)
 
 	async function handleCheckToken() {
 		const expDate = await checkToken()
@@ -50,7 +67,7 @@ export default function App() {
 						<Route path="/movies/:title" element={<MovieDetailPage movies={movies} />} />
 						<Route path="/actors" element={<ActorListPage castArray={castArray}/>} />
 						<Route path="/actors/:actor" element={<ActorDetailPage castArray={castArray}/>} />
-						<Route path="/user/:id" element={<UserDetailPage user={user}/>} />
+						<Route path="/user/:id" element={<UserDetailPage user={user} groups={groups}/>} />
 						<Route path="/groups" element={<GroupsListPage groups={groups} setGroups={setGroups}/>} />
 						<Route path="/groups/:id" element={<GroupDetailPage groups={groups} user={user} setUser={setUser}/>} />
 						<Route path="/groups/new" element={<NewGroupPage groups={groups} setGroups={setGroups} user={user}/>} />

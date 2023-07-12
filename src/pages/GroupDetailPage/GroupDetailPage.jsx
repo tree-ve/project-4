@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom"
-// import './GroupDetailPage.css';
+import './GroupDetailPage.css';
 
 export default function GroupDetailPage({ groups, user, setUser }) {
     const { id } = useParams();

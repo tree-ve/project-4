@@ -4,21 +4,21 @@ import sendRequest from './send-request';
 const BASE_URL = '/api/groups';
 
 export async function newGroup(groupData) {
-    return sendRequest(`${BASE_URL}/new`, 'POST', groupData);
+    // console.log('groups-api newGroup()')
+    return sendRequest(`${BASE_URL}/new`, 'newGroup', 'POST', groupData);
 }
   
 export async function getGroups() {
-    return sendRequest(BASE_URL);
+    // console.log('groups-api getGroups()')
+    return sendRequest(BASE_URL, 'getGroups');
 }
 
 export async function getGroupById(id) {
-    return sendRequest(`${BASE_URL}/${id}`);
+    // console.log('groups-api getGroupById()')
+    return sendRequest(`${BASE_URL}/${id}`, 'getGroupsById');
 }
 
-// export function login(credentials) {
-//     return sendRequest(`${BASE_URL}/login`, 'POST', credentials);
-// }
-
-// export function checkToken() {
-//     return sendRequest(`${BASE_URL}/check-token`);
-// }
+export async function deleteGroup(id) {
+    console.log(`groups-api deleteGroup(${id})`)
+    return sendRequest(`${BASE_URL}/${id}`, 'deleteGroup', 'DELETE');
+}

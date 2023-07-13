@@ -1,11 +1,13 @@
 // const jwt = require('jsonwebtoken');
 const Group = require('../../models/group')
+// const User = require('../../models/user');
 // const bcrypt = require('bcrypt');
 
 module.exports = {
     create,
     index,
-    show
+    show,
+    delete: deleteGroup
     // new: newGroup
 };
     
@@ -14,14 +16,9 @@ async function create(req, res) {
     try {
         console.log('controllers/api/groups/create', req.body)
         const group = await Group.create(req.body);
-        //! const token = createJWT(user);
-        //! console.log(token)
         console.log(group)
         return res.json(group);
-        //! return res.json(token);
     } catch (err) {
-        // Client will check for non-2xx status code 
-        // 400 = Bad Request
         console.log('controllers/api/groups: error')
         return res.status(400).json(err);
     }
@@ -39,4 +36,30 @@ async function show(req, res) {
     console.log('controllers/api/groups/:id', req.body)
     const group = await Group.findById(req.params.id);
     res.json(group);
+}
+
+async function deleteGroup(req, res) {
+    // console.log('delete group', req, res)
+    console.log('delete group')
+    console.log('req.params.id ->', req.params.id)
+    console.log('req.user._id ->', req.user._id)
+    // const user = await User.findOne({ 'user._id': req.user._id, 'group.owner': req.params.id});
+    // const group = await Group.findById(req.params.id);
+    // console.log("user -> ", user)
+    // console.log("group -> ", group)
+    // if (!group) {
+    //     console.log('not valid group?');
+    //     // return res.redirect('/campaigns')
+    // };
+    // group.deleteOne(
+    //     { _id: req.params.id }
+    // )
+
+    // return res.redirect('/groups');
+    try {
+        const deleteGroup = await Group.findByIdAndDelete(req.params.id)
+        res.json(deleteGroup)
+    } catch (error) {
+        res.status(400).json(error)
+    }
 }

@@ -15,5 +15,8 @@ router.post('/new', groupsCtrl.create);
 // POST /api/groups/:id
 router.get('/:id', groupsCtrl.show);
 
+// DELETE /api/groups/:id
+router.delete('/:id', groupsCtrl.delete);
+
 
 module.exports = router;

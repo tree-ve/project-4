@@ -1,4 +1,5 @@
-import { useParams, Link } from "react-router-dom"
+// import { useParams, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 // import './UserDetailPage.css';
 
 export default function UserDetailPage({ user, groups }) {

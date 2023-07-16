@@ -1,1 +1,12 @@
 "$oid":"64a952cdb8495e90fa43ef10"
+
+useEffect(function() {
+    async function getEvents() {
+        // console.log('App useEffect start')
+        const events = await eventsAPI.getEvents();
+        // categoriesRef.current = [...new Set(events.map(event => event.owner._id))];
+        setEvents(events)
+        // setEvents(events);
+    }
+    getEvents();
+}, [setEvents]);

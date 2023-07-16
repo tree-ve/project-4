@@ -1,31 +1,42 @@
 import { useParams, Link } from "react-router-dom"
 import './GroupDetailPage.css';
-import * as groupsAPI from '../../utilities/groups-api'; 
-import { useNavigate } from 'react-router-dom';
+// import * as groupsAPI from '../../utilities/groups-api'; 
+// import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
 export default function GroupDetailPage({ groups, setGroups }) {
     const { id } = useParams();
-    const navigate = useNavigate();
-    console.log('groups', groups)
+    const [isOpen, setIsOpen] = useState(false);
+    // const navigate = useNavigate();
+    // console.log('groups', groups)
     // console.log('setGroups', setGroups)
 
-    const handleDelete = async (evt, id) => {
+    // const handleDelete = async (evt, id) => {
+    //     evt.preventDefault();
+    //     console.log('handleDelete')
+    //     try {
+    //         console.log(id)
+    //         await groupsAPI.deleteGroup(id);
+    //         setGroups(groups)
+    //         navigate('/groups', {groups});
+    //     } catch (error) {
+    //         console.log(error)
+    //         this.setState({ error: "Couldn't Delete Group - Try Again" });
+    //     }
+  	// }
+
+    const handleEdit = async (evt, id) => {
         evt.preventDefault();
-        console.log('handleDelete')
-        // console.log(evt)
-        // console.log(id)
+        console.log('handleEdit')
         try {
-            // const group = await groupsAPI.getGroupById(id)
-            // const groups = await groupsAPI.deleteGroup(id);
             console.log(id)
-            await groupsAPI.deleteGroup(id);
-            // const groups = await groupsAPI.getGroups();
-            // setGroups(group)
-            setGroups(groups)
-            navigate('/groups', {groups});
+            // await groupsAPI.deleteGroup(id);
+            // setGroups(groups)
+            // navigate('/groups', {groups});
         } catch (error) {
             console.log(error)
-            // this.setState({ error: "Couldn't Create Group - Try Again" });
+            this.setState({ error: "Couldn't Edit Group - Try Again" });
         }
   	}
 
@@ -53,7 +64,11 @@ export default function GroupDetailPage({ groups, setGroups }) {
                             {/* <button onClick={handleSubmit(group._id)}>{group._id}</button> */}
                         </div>
                         {/* <button onClick={(evt) => handleDelete(evt, group._id)}><Link to="/groups" className="link">DELETE</Link></button> */}
-                        <button onClick={(evt) => handleDelete(evt, group._id)}>DELETE</button>
+                        {/* <button onClick={(evt) => handleDelete(evt, group._id)}>DELETE</button> */}
+                        <button className="initialDeleteBtn" onClick={() => setIsOpen(true)}>DELETE</button>
+                        {console.log(isOpen)}
+                        {isOpen && <DeleteModal group={group} setIsOpen={setIsOpen} />}
+                        <button onClick={(evt) => handleEdit(evt, group._id)}>EDIT</button>
                     </div>
                 ))
             }

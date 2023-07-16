@@ -10,13 +10,14 @@ export default function NavBar({ user, setUser, handleCheckToken }) {
     }
     return (
         <nav>
-            <Link to="/movies" className="link">Movies</Link>
+            {/* <Link to="/movies" className="link">Movies</Link>
             &nbsp; | &nbsp;
             <Link to="/actors" className="link">Actors</Link>
-            &nbsp; | &nbsp;
+            &nbsp; | &nbsp; */}
             <Link to="/groups" className="link">Groups</Link>
-            <br/>
-            <br/>
+            {/* <br/> */}
+            &nbsp; | &nbsp;
+            {/* <br/> */}
             <span><Link to={`/user/${user._id}`} className="link" user={user} key={user._id}>Welcome, {user.name}</Link></span>
             <br/>
             <br/>

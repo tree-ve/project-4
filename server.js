@@ -28,9 +28,10 @@ app.use('/api/users/login', require('./routes/api/users'));
 
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use('/api/groups', ensureLoggedIn, require('./routes/api/groups'));
+app.use('/api/events', ensureLoggedIn, require('./routes/api/events'));
 // app.use('/api/groups/new', ensureLoggedIn, require('./routes/api/groups'));
 // app.use('/api/groups/index', ensureLoggedIn, require('./routes/api/groups'));
-app.use('/api/groups/delete', ensureLoggedIn, require('./routes/api/groups'));
+// app.use('/api/groups/delete', ensureLoggedIn, require('./routes/api/groups'));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

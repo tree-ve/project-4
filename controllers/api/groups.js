@@ -7,7 +7,8 @@ module.exports = {
     create,
     index,
     show,
-    delete: deleteGroup
+    delete: deleteGroup,
+    update
     // new: newGroup
 };
     
@@ -19,7 +20,7 @@ async function create(req, res) {
         console.log(group)
         return res.json(group);
     } catch (err) {
-        console.log('controllers/api/groups: error')
+        console.log('controllers/api/groups/create: error')
         return res.status(400).json(err);
     }
 }
@@ -61,5 +62,18 @@ async function deleteGroup(req, res) {
         res.json(deleteGroup)
     } catch (error) {
         res.status(400).json(error)
+    }
+}
+
+async function update(req, res) {
+    console.log('controllers/api/groups/update')
+    try {
+        console.log('controllers/api/groups/update', req.params.id)
+        const group = await Group.findById(req.params.id);
+        console.log(group)
+        return res.json(group);
+    } catch (err) {
+        console.log('controllers/api/groups/update: error')
+        return res.status(400).json(err);
     }
 }

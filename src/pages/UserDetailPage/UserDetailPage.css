@@ -1,0 +1,62 @@
+.event-card {
+    /* border: 1px solid red; */
+    border-radius: 20px;
+    border-top-right-radius: 0px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 5px;
+    background-color: rgb(125, 138, 154);
+}
+
+.event-card > * {
+    /* border: 1px solid yellow; */
+    /* display: grid; */
+    display: grid;
+}
+.event-card-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-detail > * {
+    /* border: 1px solid #00ff00; */
+    margin: 5px;
+}
+
+.deleteEventBtn {
+    cursor: pointer;
+    font-weight: 500;
+    /* padding: 4px 8px; */
+    justify-self: end;
+    justify-content: center;
+    align-items: center;
+    grid-column: span 2;
+    padding: 0;
+    border-radius: 10px;
+    height: 20px;
+    width: 20px;
+    min-width: 20px;
+    border: none;
+    font-size: 12px;
+    color: #2c3e50;
+    background: white;
+    transition: all 0.25s ease;
+    /* box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06); */
+    position: absolute;
+    /* float: right; */
+    /* right: 0; */
+    /* top: 0; */
+    /* align-self: flex-end; */
+    margin-top: -3px;
+    margin-right: -3px;
+}
+  
+.deleteEventBtn:hover {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    /* box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04); */
+    font-size: 16px;
+    transform: translate(2.5px, -2.5px);
+}

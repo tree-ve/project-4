@@ -5,20 +5,20 @@ const BASE_URL = '/api/groups';
 
 export async function newGroup(groupData) {
     // console.log('groups-api newGroup()')
-    return sendRequest(`${BASE_URL}/new`, 'newGroup', 'POST', groupData);
+    return sendRequest(`${BASE_URL}/new`, 'POST', groupData);
 }
   
 export async function getGroups() {
     // console.log('groups-api getGroups()')
-    return sendRequest(BASE_URL, 'getGroups');
+    return sendRequest(BASE_URL);
 }
 
 export async function getGroupById(id) {
-    // console.log('groups-api getGroupById()')
-    return sendRequest(`${BASE_URL}/${id}`, 'getGroupsById');
+    console.log('groups-api getGroupById()', id)
+    return sendRequest(`${BASE_URL}/${id}`);
 }
 
 export async function deleteGroup(id) {
     console.log(`groups-api deleteGroup(${id})`)
-    return sendRequest(`${BASE_URL}/${id}`, 'deleteGroup', 'DELETE');
+    return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }

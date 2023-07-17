@@ -1,11 +1,13 @@
 const jwt = require('jsonwebtoken');
 const User = require('../../models/user')
+const Event = require('../../models/event')
 const bcrypt = require('bcrypt');
 
 module.exports = {
     create,
     login,
-    checkToken
+    checkToken,
+    show
 };
     
 async function create(req, res) {
@@ -38,13 +40,29 @@ async function login(req, res) {
     }
 }
 
+async function show(req, res) {
+    try {
+        console.log('users/show')
+        console.log('req.params', req.params)
+        console.log('res.user', req.user)
+        const user = await User.findById(req.params.id);
+        const events = await Event.find({user: user._id})
+        console.log('user', user)
+        console.log('events', events)
+        res.json({user: user, events: events});
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+/*-- Helper Functions --*/
+
 function checkToken(req, res) {
     // req.user will always be there for you when a token is sent
     console.log('req.user', req.user);
     res.json(req.exp);
 }
-
-/*-- Helper Functions --*/
 
 function createJWT(user) {
     return jwt.sign(

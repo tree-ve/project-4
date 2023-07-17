@@ -27,6 +27,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/users/login', require('./routes/api/users'));
 
 const ensureLoggedIn = require('./config/ensureLoggedIn');
+app.use('/api/users', ensureLoggedIn, require('./routes/api/users'));
 app.use('/api/groups', ensureLoggedIn, require('./routes/api/groups'));
 app.use('/api/events', ensureLoggedIn, require('./routes/api/events'));
 // app.use('/api/groups/new', ensureLoggedIn, require('./routes/api/groups'));

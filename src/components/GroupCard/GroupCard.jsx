@@ -4,11 +4,11 @@ export default function GroupCard({ groups }) {
     return (
         <>
             {/* {console.log(groups)} */}
-            {groups.map(g => (
-                <Link to={`/groups/${g._id}`} key={g._id}>
-                    <div className="group-card" key={g.title}>
+            {groups.map(group => (
+                <Link to={`/groups/${group._id}`} group={group} key={group._id}>
+                    <div className="group-card" key={group._id}>
                         <div>
-                            <p className="group-card-text">{g.title}</p>
+                            <p className="group-card-text">{group.title}</p>
                         </div>
                     </div>
                 </Link>

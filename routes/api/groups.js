@@ -6,17 +6,19 @@ const groupsCtrl = require('../../controllers/api/groups');
 // // GET /api/users/check-token
 // router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 
-// POST /api/groups
+// GET /api/groups
 router.get('/', groupsCtrl.index);
 
 // POST /api/groups/new
 router.post('/new', groupsCtrl.create);
 
-// POST /api/groups/:id
+// GET /api/groups/:id
 router.get('/:id', groupsCtrl.show);
 
 // DELETE /api/groups/:id
 router.delete('/:id', groupsCtrl.delete);
 
+// // GET /api/groups/:id
+// router.get('/:id', groupsCtrl.getEvents);
 
 module.exports = router;

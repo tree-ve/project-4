@@ -20,6 +20,7 @@ export default function GroupsListPage({ groups, setGroups }) {
         }
         getGroups();
     }, [setGroups]);
+    
     return (
         <div>
             <Link to="/groups/new" className="link" groups={groups}>Make a new group</Link>

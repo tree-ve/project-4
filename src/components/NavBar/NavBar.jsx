@@ -8,6 +8,9 @@ export default function NavBar({ user, setUser, handleCheckToken }) {
         // Update state will also cause a re-render
         setUser(null);
     }
+
+    // console.log(user)
+
     return (
         <nav>
             {/* <Link to="/movies" className="link">Movies</Link>
@@ -18,7 +21,7 @@ export default function NavBar({ user, setUser, handleCheckToken }) {
             {/* <br/> */}
             &nbsp; | &nbsp;
             {/* <br/> */}
-            <span><Link to={`/user/${user._id}`} className="link" user={user} key={user._id}>Welcome, {user.name}</Link></span>
+            <span><Link to={`/user/${user._id}`} className="link" user={user} key={user._id}>Welcome, {user.username}</Link></span>
             <br/>
             <br/>
             <Link to="" onClick={handleLogOut}>Log Out</Link>

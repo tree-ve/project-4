@@ -5,20 +5,25 @@ const BASE_URL = '/api/events';
 
 export async function newEvent(eventData) {
     // console.log('events-api newEvent()')
-    return sendRequest(`${BASE_URL}/new`, 'newEvent', 'POST', eventData);
+    return sendRequest(`${BASE_URL}/new`, 'POST', eventData);
 }
   
 export async function getEvents() {
-    // console.log('events-api getEvents()')
-    return sendRequest(BASE_URL, 'getEvents');
+    console.log('events-api getEvents()')
+    return sendRequest(BASE_URL);
 }
+
+// export async function getGroupEvents(groupId) {
+//     console.log('events-api getGroupEvents()', groupId)
+//     return sendRequest(BASE_URL, 'GET', groupId);
+// }
 
 export async function getEventById(id) {
     // console.log('events-api getEventById()')
-    return sendRequest(`${BASE_URL}/${id}`, 'getEventsById');
+    return sendRequest(`${BASE_URL}/${id}`);
 }
 
 export async function deleteEvent(id) {
     console.log(`events-api deleteEvent(${id})`)
-    return sendRequest(`${BASE_URL}/${id}`, 'deleteEvent', 'DELETE');
+    return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }

@@ -13,7 +13,7 @@
 
 .full-card {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr 1fr;
     width: 600px;
     place-items: center;
     grid-auto-flow: row;
@@ -36,6 +36,37 @@
     grid-row: 1;
     margin: 0;
     padding: 30px;
+}
+
+.fc-media-screen {
+    grid-column: span 2;
+    width: auto;
+    display: grid;
+    grid-template-rows: auto 3fr;
+}
+
+.fc-toolbar {
+    display: grid !important;
+    grid-template-rows: 50px 0px 50px;
+    grid-auto-flow: row;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 10px !important;
+}
+
+.fc-toolbar-chunk {
+    /* margin: 20px; */
+    /* width: 25vw; */
+    grid-column: span 2;
+    display: inline;
+    height: auto;
+    /* padding: 10px 50px; */
+}
+
+.fc-view-harness,
+.fc-view-harness-active {
+    height: 391px !important;
+    width: 443px;
 }
 
 .link {

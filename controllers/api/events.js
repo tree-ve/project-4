@@ -1,6 +1,6 @@
 // const jwt = require('jsonwebtoken');
 const Event = require('../../models/event')
-// const User = require('../../models/user');
+const User = require('../../models/user');
 // const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -26,11 +26,18 @@ async function create(req, res) {
 }
 
 async function index(req, res) {
-    console.log('controllers/api/events/index', req.body)
-    const events = await Event.find({}).sort('createdAt').exec();
-    // re-sort based upon the sortOrder of the populated categories
-    // events.sort((a, b) => a.category.sortOrder - b.category.sortOrder);
-    res.json(events);
+    try {
+        // console.log('controllers/api/events/index', req.body, req.user._id)
+        // console.log(req)
+        const user = await User.findById(req.user._id)
+        const events = await Event.find({ user: user._id}).sort('createdAt').exec();
+        // re-sort based upon the sortOrder of the populated categories
+        // events.sort((a, b) => a.category.sortOrder - b.category.sortOrder);
+        res.json(events);
+    } catch (error) {
+        console.log(error)
+    }
+    
 }
 
 // async function show(req, res) {

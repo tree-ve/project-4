@@ -36,6 +36,11 @@ code {
   height: 100%;
 }
 
+/* :root {
+  --fc-border-color: black;
+  --fc-daygrid-event-dot-width: 5px;
+} */
+
 .align-ctr {
   text-align: center;
 }

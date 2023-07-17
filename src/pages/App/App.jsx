@@ -9,7 +9,7 @@ import { Routes, Route } from 'react-router-dom'
 // Add the following import
 import { getUser, checkToken } from '../../utilities/users-service';
 import * as groupsAPI from '../../utilities/groups-api';
-import * as eventsAPI from '../../utilities/events-api';
+// import * as eventsAPI from '../../utilities/events-api';
 
 // Custom Components
 import NavBar from '../../components/NavBar/NavBar'
@@ -46,16 +46,16 @@ export default function App() {
         getGroups();
     }, [setGroups]);
 
-	useEffect(function() {
-		async function getEvents() {
-			// console.log('App useEffect start')
-			const events = await eventsAPI.getEvents();
-			// categoriesRef.current = [...new Set(events.map(event => event.owner._id))];
-			setEvents(events)
-			// setEvents(events);
-		}
-		getEvents();
-	}, [setEvents]);
+	// useEffect(function() {
+	// 	async function getEvents() {
+	// 		// console.log('App useEffect start')
+	// 		const events = await eventsAPI.getEvents();
+	// 		// categoriesRef.current = [...new Set(events.map(event => event.owner._id))];
+	// 		setEvents(events)
+	// 		// setEvents(events);
+	// 	}
+	// 	getEvents();
+	// }, [setEvents]);
 
 	const [authPage, setAuthPage] = useState()
 
@@ -78,14 +78,14 @@ export default function App() {
 				<>
 					<NavBar user={user} setUser={setUser} handleCheckToken={handleCheckToken}/>
 					<Routes>
-						{/* <Route path="/movies" element={<MoviesListPage movies={movies} />} />
-						<Route path="/movies/:title" element={<MovieDetailPage movies={movies} />} />
-						<Route path="/actors" element={<ActorListPage castArray={castArray}/>} />
-						<Route path="/actors/:actor" element={<ActorDetailPage castArray={castArray}/>} /> */}
-						<Route path="/user/:id" element={<UserDetailPage user={user} groups={groups} events={events} setEvents={setEvents}/>} />
+						{/* USER ROUTES */}
+						{/* <Route path="/user/:id" element={<UserDetailPage user={user} groups={groups} events={events} setEvents={setEvents}/>} /> */}
+						<Route path="/user/:id" element={<UserDetailPage events={events} setEvents={setEvents}/>} />
+						{/* GROUP ROUTES */}
 						<Route path="/groups" element={<GroupsListPage groups={groups} setGroups={setGroups}/>} />
 						<Route path="/groups/:id" element={<GroupDetailPage groups={groups} setGroups={setGroups}/>} />
 						<Route path="/groups/new" element={<NewGroupPage groups={groups} setGroups={setGroups} user={user}/>} />
+						{/* EVENT ROUTES */}
 						<Route path="/events/new" element={<NewEventPage events={events} setEvents={setEvents} user={user}/>} />
 					</Routes>
                 </>

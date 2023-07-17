@@ -14,3 +14,8 @@ export function login(credentials) {
 export function checkToken() {
     return sendRequest(`${BASE_URL}/check-token`);
 }
+
+export function showUser(id) {
+    console.log('users-api showUser', id)
+    return sendRequest(`${BASE_URL}/${id}`);
+}

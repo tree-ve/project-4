@@ -14,11 +14,16 @@ export async function getGroups() {
 }
 
 export async function getGroupById(id) {
-    console.log('groups-api getGroupById()', id)
+    // console.log('groups-api getGroupById()', id)
     return sendRequest(`${BASE_URL}/${id}`);
 }
 
 export async function deleteGroup(id) {
-    console.log(`groups-api deleteGroup(${id})`)
+    // console.log(`groups-api deleteGroup(${id})`)
     return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
+}
+
+export async function editGroup(id, groupData) {
+    // console.log(`groups-api editGroup(${id}) -> ${groupData}`)
+    return sendRequest(`${BASE_URL}/${id}`, 'PUT', groupData);
 }

@@ -10,6 +10,7 @@ export default function NewEventForm({ events, setEvents, user }) {
         start: '',
         end: '',
         user: user._id,
+        title: '',
         error: ''
     });
 
@@ -27,6 +28,8 @@ export default function NewEventForm({ events, setEvents, user }) {
         // Prevent form from being submitted to the server
         evt.preventDefault();
         try {
+            console.log(eventFormData)
+            eventFormData.title = `${user.username} - ${eventFormData.name}`
             console.log(eventFormData)
             // The promise returned by the signUp service method 
             // will resolve to the user object included in the

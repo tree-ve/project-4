@@ -24,9 +24,11 @@ export default function NavBar({ user, setUser, handleCheckToken }) {
             <span><Link to={`/user/${user._id}`} className="link" user={user} key={user._id}>Welcome, {user.username}</Link></span>
             <br/>
             <br/>
-            <Link to="" onClick={handleLogOut}>Log Out</Link>
+            <button className="logout">
+                <Link to="" onClick={handleLogOut}>Log Out</Link>
+            </button>
             <br/>
-            <button onClick={handleCheckToken}>Check When My Login Expires</button>
+            {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
             <br/>
             <br/>
         </nav>

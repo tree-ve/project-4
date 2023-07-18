@@ -23,9 +23,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* background-color: var(--tan-4); */
   background-color: rgb(75, 87, 98);
-  padding: 2vmin;
+  padding: 5px;
   height: 100vh;
   color: white;
+  /* width: 99vw; */
 }
 
 code {
@@ -124,8 +125,8 @@ input:focus {
 }
 
 button, a.button {
-  margin: 1vmin;
-  padding: 1vmin;
+  /* margin: 1vmin; */
+  /* padding: 1vmin; */
   color: var(--white);
   background-color: var(--orange);
   font-size: 2vmin;
@@ -153,7 +154,7 @@ button:disabled, form:invalid button[type="submit"] {
   background-color: var(--tan-4);
 }
 
-button[type="submit"] {
+/* button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
-}
+} */

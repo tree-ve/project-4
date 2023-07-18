@@ -18,7 +18,7 @@ router.get('/:id', groupsCtrl.show);
 // DELETE /api/groups/:id
 router.delete('/:id', groupsCtrl.delete);
 
-// // GET /api/groups/:id
-// router.get('/:id', groupsCtrl.getEvents);
+// PUT /api/groups/:id
+router.put('/:id', groupsCtrl.update);
 
 module.exports = router;

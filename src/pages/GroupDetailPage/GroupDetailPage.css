@@ -13,7 +13,10 @@
 
 .full-card {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto;
+    /* border: 1px solid red; */
     width: 600px;
     place-items: center;
     grid-auto-flow: row;
@@ -38,12 +41,66 @@
     padding: 30px;
 }
 
+.memberList {
+    padding-left: 0px;
+    align-items: start;
+    align-content: start;
+    align-self: flex-start;
+    max-height: 130px;
+}
+
+.memberList > h4 {
+    margin: 0px 0px 5px 0px;
+}
+
+.memberList > * {
+    height: 25px;
+    /* border: 1px solid red; */
+}
+
+.newUserForm {
+    display: flex;
+    flex-direction: column;
+    height: 95px;
+    max-height: 95px;
+    /* width: 200px; */
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    justify-items: start;
+    justify-content: start;
+    align-items: center;
+}
+
+.newUser {
+    margin-top: 20px;
+    width: 140px;
+    height: 30px;
+}
+
+.newUserSubmit {
+    width: 55px;
+    min-width: 55px;
+    font-size: 12px;
+    height: 25px;
+    min-height: 25px;
+    /* margin: 10px; */
+    margin-top: 55px;
+    text-align: center;
+    position: absolute;
+    /* text-justify: auto; */
+}
+
 .fc-media-screen {
     grid-column: span 2;
     width: auto;
     display: grid;
     grid-template-rows: auto 3fr;
 }
+
+/* .fc {
+    border: 1px solid red;
+    padding: 10px 50px;
+} */
 
 .fc-toolbar {
     display: grid !important;
@@ -52,6 +109,7 @@
     justify-items: center;
     align-items: center;
     margin-bottom: 10px !important;
+    margin-top: 70px !important;
 }
 
 .fc-toolbar-chunk {
@@ -65,8 +123,26 @@
 
 .fc-view-harness,
 .fc-view-harness-active {
-    height: 391px !important;
-    width: 443px;
+    min-height: 391px !important;
+    height: auto !important;
+    width: 413px;
+}
+
+.fc-event-time {
+    /* color: red; */
+    visibility: hidden;
+    font-size: 0px;
+}
+
+.fc-scroller {
+    scrollbar-width: 0px !important;
+    overflow: hidden !important;
+    /* width: 100%; */
+    /* display: none; */
+}
+
+.fc .fc-scroller-liquid-absolute {
+    position: static;
 }
 
 .link {
@@ -93,6 +169,25 @@
     box-shadow: 0px 0px 1.5px 1.5px rgba(153, 40, 40, 0.6);
 }
 
+.initialEditBtn {
+    margin: 20px 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 13px 25px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: none;
+    color: black;
+    background: rgb(231, 231, 231);
+    transition: all 0.25s ease;
+}
+  
+.initialEditBtn:hover {
+    /* transform: translateY(-5px); */
+    /* box-shadow: 0 10px 20px -10px rgba(24, 90, 219, 0.6); */
+    box-shadow: 0px 0px 1.5px 1.5px rgba(255, 255, 255, 0.6);
+}
+
 .darkBG {
     background-color: rgba(0, 0, 0, 0.3);
     width: 100vw;
@@ -102,10 +197,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
+    z-index: 1000;
 }
   
 .centered {
     position: fixed;
+    z-index: 1000;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -116,7 +213,8 @@
     height: 170px;
     background: slategrey;
     color: white;
-    z-index: 10;
+    position: relative;
+    z-index: 1000;
     border-radius: 16px;
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
 }
@@ -156,6 +254,46 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.userListItem {
+    display: grid;
+    grid-template-columns: auto 0px;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.removeUser {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    justify-self: end;
+    align-items: center;
+    font-weight: 500;
+    padding: 0px;
+    border-radius: 10px;
+    text-align: center;
+    height: 12px;
+    width: 12px;
+    min-width: 12px;
+    border: none;
+    font-size: 8px;
+    color: #2c3e50;
+    background: white;
+    transition: all 0.25s ease;
+    position: relative;
+    margin-right: 10px;
+}
+
+.removeUser:hover {
+    /* width: 15px; */
+    /* height: 15px; */
+    /* border-radius: 50%; */
+    /* box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04); */
+    /* font-size: 12px; */
+    background-color: rgb(254, 95, 87);
+    color: rgb(155, 0, 0);
+    /* transform: translate(2.5px, -2.5px); */
+}
   
 .closeBtn {
     cursor: pointer;
@@ -181,12 +319,13 @@
 }
   
 .closeBtn:hover {
-    width: 25px;
+    /* width: 25px;
     height: 25px;
     border-radius: 50%;
-    /* box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04); */
     font-size: 16px;
-    transform: translate(2.5px, -2.5px);
+    transform: translate(2.5px, -2.5px); */
+    background-color: rgb(254, 95, 87);
+    color: rgb(155, 0, 0);
 }
   
 .deleteBtn {

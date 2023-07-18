@@ -12,6 +12,7 @@ const groupSchema = new Schema({
         ref: 'User',
         required: true,
     },
+    // addUserEmail: {type: String, required: true},
 }, {
     timestamps: true
 });

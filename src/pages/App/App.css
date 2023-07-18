@@ -45,3 +45,25 @@ input {
   text-decoration: none;
   color: rgb(255, 255, 255);
 }
+
+.logout {
+  min-width: 70px;
+  display: flex;
+  width: 70px;
+  height: 22px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  justify-content: center;
+}
+
+.logout > a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  align-self: center;
+}
+
+nav {
+  height: 40px;
+}

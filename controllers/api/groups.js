@@ -62,7 +62,7 @@ async function show(req, res) {
             // console.log(userEvents)
             groupUserEvents.push(userEvents)
         }
-        console.log(groupUserEvents)
+        // console.log(groupUserEvents)
         // const groupUsersTest = group.users.forEach(groupUser =>
         //     console.log('TEST!!!: ', groupUser);
         //     const userEvents = await Event.find({ user: groupUser._id})
@@ -101,11 +101,26 @@ async function deleteGroup(req, res) {
 }
 
 async function update(req, res) {
-    console.log('controllers/api/groups/update')
     try {
-        console.log('controllers/api/groups/update', req.params.id)
+        console.log('controllers/api/groups/update')
+        if (req.body.addedUserEmail === undefined) {
+            req.body.addedUserEmail = ''
+        }
         const group = await Group.findById(req.params.id);
-        console.log(group)
+        if (req.body.addedUserEmail.includes('@')) {
+            const newUserArr = await User.find({ email: req.body.addedUserEmail })
+            const newUser = newUserArr[0]
+            if (newUser) {
+                if (!group.users.includes(newUser._id)) {
+                    group.users.push(newUser._id)
+                    await group.save()
+                    return res.json(group);
+                }
+            }
+        }
+        group.title = req.body.title
+        group.users = req.body.users
+        await group.save()
         return res.json(group);
     } catch (err) {
         console.log('controllers/api/groups/update: error')

@@ -2,7 +2,7 @@ import * as groupsAPI from '../../utilities/groups-api';
 import { useNavigate } from 'react-router-dom';
 import React from "react";
 
-const DeleteModal = ({ group, setIsOpen }) => {
+const DeleteModal = ({ group, setDeleteIsOpen }) => {
     const navigate = useNavigate();
 
     const handleDelete = async (evt, id) => {
@@ -12,7 +12,7 @@ const DeleteModal = ({ group, setIsOpen }) => {
             console.log(id)
             await groupsAPI.deleteGroup(id);
             // setGroups(groups)
-            setIsOpen(false)
+            setDeleteIsOpen(false)
             navigate('/groups');
         } catch (error) {
             console.log(error)
@@ -23,13 +23,13 @@ const DeleteModal = ({ group, setIsOpen }) => {
     return(
         <>
             {console.log("DeleteModal")}
-            <div className="darkBG" onClick={() => setIsOpen(false)} />
+            <div className="darkBG" onClick={() => setDeleteIsOpen(false)} />
             <div className="centered">
                 <div className="modal">
                     <div className="modalHeader">
                         <h5 className="heading">Delete Group?</h5>
                     </div>
-                    <button className="closeBtn" onClick={() => setIsOpen(false)}>
+                    <button className="closeBtn" onClick={() => setDeleteIsOpen(false)}>
                         X
                     </button>
                     <div className="ModalContent">
@@ -38,10 +38,10 @@ const DeleteModal = ({ group, setIsOpen }) => {
                     <div className="modalActions">
                         <div className="actionsContainer">
                             <button className="deleteBtn" onClick={(evt) => handleDelete(evt, group._id)}>DELETE</button>
-                            {/* <button className="deleteBtn" onClick={() => setIsOpen(false)}>
+                            {/* <button className="deleteBtn" onClick={() => setDeleteIsOpen(false)}>
                                 DELETE
                             </button> */}
-                            <button className="cancelBtn" onClick={() => setIsOpen(false)}>
+                            <button className="cancelBtn" onClick={() => setDeleteIsOpen(false)}>
                                 CANCEL
                             </button>
                         </div>

@@ -83,7 +83,7 @@ export default function App() {
 						<Route path="/user/:id" element={<UserDetailPage events={events} setEvents={setEvents}/>} />
 						{/* GROUP ROUTES */}
 						<Route path="/groups" element={<GroupsListPage groups={groups} setGroups={setGroups}/>} />
-						<Route path="/groups/:id" element={<GroupDetailPage groups={groups} setGroups={setGroups}/>} />
+						<Route path="/groups/:id" element={<GroupDetailPage groups={groups} setGroups={setGroups} user={user}/>} />
 						<Route path="/groups/new" element={<NewGroupPage groups={groups} setGroups={setGroups} user={user}/>} />
 						{/* EVENT ROUTES */}
 						<Route path="/events/new" element={<NewEventPage events={events} setEvents={setEvents} user={user}/>} />

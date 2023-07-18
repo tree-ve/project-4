@@ -18,6 +18,7 @@ export default function UserDetailPage() {
     // const [user, setUser] = useState(showUser(id));
     const [userPage, setUserPage] = useState(null);
     const [events, setEvents] = useState([]);
+    const [pageEvents, setPageEvents] = useState([]);
     
     const [isUser, setIsUser] = useState(false);
     // console.log(user._id, 'user._id')
@@ -28,12 +29,12 @@ export default function UserDetailPage() {
             try {
                 const shownUser = await showUser(id)
                 setEvents([])
-                console.log('events 1', events)
-                console.log('shownUser.events', shownUser.events)
+                // console.log('events 1', events)
+                // console.log('shownUser.events', shownUser.events)
                 setUserPage(shownUser.user)
-                setEvents(shownUser.events)
-                console.log('user', user)
-                console.log('events 2', events)
+                setPageEvents(shownUser.events)
+                // console.log('user', user)
+                // console.log('events 2', events)
             } catch (error) {
                 console.error(error);
             }
@@ -98,17 +99,17 @@ export default function UserDetailPage() {
                 <div className="full-detail">
                     {/* {console.log(userPage.user)} */}
                     {/* {currentUser = userPage.user} */}
-                    <h2>{userPage.name}</h2>
+                    <h2>{userPage.username}</h2>
                     <h2>{userPage.email}</h2>
-                    <h2>{userPage._id}</h2>
+                    {/* <h2>{userPage._id}</h2> */}
                     {isUser && (
                         <Link to="/events/new" className="link" events={events} setEvents={setEvents} user={user}>
                             Make a new event
                         </Link>
                     )}
                     <div className="event-list">
-                        {events ? (
-                            events.map(event => (
+                        {pageEvents ? (
+                            pageEvents.map(event => (
                                 <EventCard event={event} setEvents={setEvents} isUser={isUser} key={event._id}/>
                             ))
                         ) : (

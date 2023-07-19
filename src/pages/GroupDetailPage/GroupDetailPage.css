@@ -172,8 +172,8 @@
 .fc-event:hover,
 .fc-event-main-frame:hover,
 .fc-event-main-frame:hover > .fc-event-title {
-    /* color: red; */
-    background-color: rgb(180, 0, 180);
+    color: rgb(70, 70, 70);
+    background-color: rgb(149, 243, 243);
     border-radius: 5px;
     /* width: max-content; */
     min-width: max-content;

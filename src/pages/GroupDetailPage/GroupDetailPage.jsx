@@ -9,6 +9,7 @@ import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import EditGroupModal from "../../components/EditGroupModal/EditGroupModal";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import MemberList from "../../components/MemberList/MemberList";
 
 export default function GroupDetailPage({ groups, setGroups, user }) {
     const { id } = useParams();
@@ -18,7 +19,7 @@ export default function GroupDetailPage({ groups, setGroups, user }) {
     const [deleteIsOpen, setDeleteIsOpen] = useState(false);
     const [editIsOpen, setEditIsOpen] = useState(false);
     const [isOwner, setIsOwner] = useState(false);
-    const [updatedBullshit, setUpdatedBullshit] = useState([]);
+    const [updatedMembers, setUpdatedMembers] = useState([]);
     const [newUserData, setNewUserData] = useState({
         addedUserEmail: ''
     });
@@ -46,7 +47,7 @@ export default function GroupDetailPage({ groups, setGroups, user }) {
         } catch (error) {
             console.error(error)
         }
-    }, [id, editIsOpen, newUserData, updatedBullshit]);
+    }, [id, editIsOpen, newUserData, updatedMembers]);
 
     // console.log('user', user)
     // console.log('group.owner', group.owner)
@@ -61,42 +62,42 @@ export default function GroupDetailPage({ groups, setGroups, user }) {
     }, [user, group]);
 
     function handleChange(evt) {
-        const newAddedUserEmail = { ...newUserData, [evt.target.name]: evt.target.value }
-        console.log(newAddedUserEmail)
+        // const newAddedUserEmail = { ...newUserData, [evt.target.name]: evt.target.value }
         setNewUserData({ ...newUserData, [evt.target.name]: evt.target.value });
+        // setNewUserData(newAddedUserEmail);
         // console.log(credentials)
         setError('');
     }
 
-    async function removeUser(evt, removedUser) {
-        console.log("removeUser Function")
-        evt.preventDefault()
-        console.log(removedUser)
-        try {
-            console.log(group.users)
-            // const newUserList = group.users.findIndex(user => user._id === removedUser._id)
-            // console.log(newUserList)
+    // async function removeUser(evt, removedUser) {
+    //     console.log("removeUser Function")
+    //     evt.preventDefault()
+    //     console.log(removedUser)
+    //     try {
+    //         console.log(group.users)
+    //         // const newUserList = group.users.findIndex(user => user._id === removedUser._id)
+    //         // console.log(newUserList)
 
-            setUpdatedBullshit(group.users)
-            const updatedGroupUsers = group.users
+    //         setUpdatedMembers(group.users)
+    //         const updatedGroupUsers = group.users
 
-            console.log(updatedGroupUsers)
-            const userIdx = updatedGroupUsers.findIndex(user => user._id === removedUser._id)
-            if (userIdx > -1) {
-                updatedGroupUsers.splice(userIdx, 1)
-            }
-            // console.log(group.users)
-            console.log(updatedGroupUsers)
-            console.log(group._id)
-            console.log(group)
-            group.users = updatedGroupUsers
-            await groupsAPI.editGroup(group._id, group);
-            // const editGroupData = await groupsAPI.editGroup(group._id, group);
-            // console.log(editGroupData)
-        } catch (error) {
-            console.error(error)
-        }
-    }
+    //         console.log(updatedGroupUsers)
+    //         const userIdx = updatedGroupUsers.findIndex(user => user._id === removedUser._id)
+    //         if (userIdx > -1) {
+    //             updatedGroupUsers.splice(userIdx, 1)
+    //         }
+    //         // console.log(group.users)
+    //         console.log(updatedGroupUsers)
+    //         console.log(group._id)
+    //         console.log(group)
+    //         group.users = updatedGroupUsers
+    //         await groupsAPI.editGroup(group._id, group);
+    //         // const editGroupData = await groupsAPI.editGroup(group._id, group);
+    //         // console.log(editGroupData)
+    //     } catch (error) {
+    //         console.error(error)
+    //     }
+    // }
 
     async function addNewUser(evt) {
         evt.preventDefault()
@@ -145,10 +146,10 @@ export default function GroupDetailPage({ groups, setGroups, user }) {
                         
                         <ul className="memberList">
                             <h4>Members:</h4>
-                            {group.users.map(u => (
+                            <MemberList group={group} isOwner={isOwner} updatedMembers={updatedMembers} setUpdatedMembers={setUpdatedMembers} />
+                            {/* {group.users.map(u => (
                                 <div className="userListItem" key={u._id}>
                                     <Link to={`/user/${u._id}`} className="link" user={u._id} key={u._id}>{u.username}</Link>
-                                    {/* {console.log(isOwner)} */}
                                     {isOwner ? (
                                         (group.owner._id === u._id) ? (
                                             <></>
@@ -157,7 +158,7 @@ export default function GroupDetailPage({ groups, setGroups, user }) {
                                         )
                                         ) : (<></>)}
                                 </div>
-                            ))}
+                            ))} */}
                             <div>
                                 {isOwner ? (
                                     <form className="newUserForm" onSubmit={(evt) => addNewUser(evt)}>

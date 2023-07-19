@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { signUp } from '../../utilities/users-service';
 
 export default class SignUpForm extends Component {
-// export default function SignUpForm({ user, setUser }) {
+
     state = {
         username: '',
         email: '',

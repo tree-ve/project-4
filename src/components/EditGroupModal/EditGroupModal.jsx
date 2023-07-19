@@ -25,14 +25,15 @@ export default function EditGroupModal({ group, setEditIsOpen }) {
         // Prevent form from being submitted to the server
         evt.preventDefault();
         try {
-            console.log('groupEditData -> ', groupEditData)
+            // console.log('groupEditData -> ', groupEditData)
             setGroupEditData(groupEditData)
             // The promise returned by the signUp service method 
             // will resolve to the user object included in the
             // payload of the JSON Web Token (JWT)
-            const editGroupData = await groupsAPI.editGroup(group._id, groupEditData);
+            // const editGroupData = await groupsAPI.editGroup(group._id, groupEditData);
+            await groupsAPI.editGroup(group._id, groupEditData);
             // const newGroups = [...groups, group];
-            console.log('editGroupData -> ', editGroupData)
+            // console.log('editGroupData -> ', editGroupData)
             // setGroups(newGroups);
             setEditIsOpen(false)
             // navigate(`/groups`)
@@ -71,7 +72,7 @@ export default function EditGroupModal({ group, setEditIsOpen }) {
                         </div>
                         <div className="modalActions">
                             <div className="actionsContainer">
-                                <button className="editBtn" type="submit" onClick={(evt) => handleSubmit(evt)}>SAVE CHANGES</button>
+                                <button className="editBtn" type="submit" onClick={(evt) => handleSubmit(evt)}>SAVE</button>
                                 <button className="cancelBtn" onClick={() => setEditIsOpen(false)}>CANCEL</button>
                             </div>
                         </div>
